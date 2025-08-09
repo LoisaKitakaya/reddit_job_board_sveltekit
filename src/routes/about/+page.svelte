@@ -1,3 +1,3 @@
 <script lang="ts"></script>
 
-<h1>This is the about page</h1>
+<h1>About the <span class="font-semibold text-red-400">Reddit Freelancer</span></h1>

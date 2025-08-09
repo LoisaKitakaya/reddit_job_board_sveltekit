@@ -12,11 +12,11 @@
 	<title>Reddit Freelancer</title>
 </svelte:head>
 
-<div class="bg-amber-50">
+<div>
 	<div class="mx-auto w-3/4">
 		<Navbar />
 
-		<div class="py-4 min-h-screen px-4 bg-gray-800">
+		<div class="min-h-screen bg-gray-800 px-4 py-4">
 			{@render children?.()}
 		</div>
 
