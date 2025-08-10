@@ -2,6 +2,7 @@
 	import moment from 'moment';
 	import { onMount } from 'svelte';
 	import { ArrowRight, ArrowLeft } from '@lucide/svelte';
+	import ErrorMessage from '$lib/components/ErrorMessage.svelte';
 
 	interface Post {
 		id: string;
@@ -117,7 +118,7 @@
 				type="text"
 				bind:value={postOwner}
 				on:input={handleFilterChange}
-				placeholder="Enter username"
+				placeholder="Enter Username"
 				class="input w-64 border lg:w-full"
 			/>
 		</div>
@@ -213,7 +214,7 @@
 		</table>
 	</div>
 {:else if isLoading === false && posts.length === 0}
-	<h1>Query not found</h1>
+	<ErrorMessage {postOwner} {postTrigger} {subreddit} />
 {/if}
 
 <div class="pagination flex items-center justify-center gap-4 pt-8 pb-4">
