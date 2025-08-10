@@ -104,7 +104,7 @@
 	onMount(fetchPosts);
 </script>
 
-<h1>Welcome to the <span class="font-semibold text-red-400">Reddit Freelancer</span></h1>
+<h1>Welcome to <span class="font-semibold text-red-400">Reddit Job Board</span></h1>
 
 <div class="filters pt-4 pb-6">
 	<div class="flex w-full items-center justify-between">
@@ -120,9 +120,13 @@
 			/>
 		</div>
 		<div>
-			<label class="label pb-1">
+			<label class="label pb-1 w-full">
 				<span class="label-text">Post Type</span>
-				<select bind:value={postTrigger} on:change={handleFilterChange} class="select border">
+				<select
+					bind:value={postTrigger}
+					on:change={handleFilterChange}
+					class="select w-full border"
+				>
 					{#each triggerOptions as option}
 						<option value={option.value}>{option.label}</option>
 					{/each}
@@ -130,9 +134,9 @@
 			</label>
 		</div>
 		<div>
-			<label class="label pb-1">
+			<label class="label pb-1 w-full">
 				<span class="label-text">Subreddit</span>
-				<select bind:value={subreddit} on:change={handleFilterChange} class="select border">
+				<select bind:value={subreddit} on:change={handleFilterChange} class="select w-full border">
 					{#each subredditOptions as option}
 						<option value={option.value}>{option.label}</option>
 					{/each}
@@ -215,7 +219,7 @@
 	>
 		<ArrowLeft />
 	</button>
-	<span>Page {currentPage} of {totalPages} (Total Posts: {totalCount})</span>
+	<span>Page {currentPage} of {totalPages} | Total Posts: {totalCount}</span>
 	<button
 		on:click={nextPage}
 		disabled={offset + limit >= totalCount}

@@ -9,7 +9,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Reddit Freelancer</title>
+	<title>Reddit Job Board</title>
 </svelte:head>
 
 <div>
