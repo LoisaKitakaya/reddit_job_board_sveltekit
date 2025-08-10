@@ -107,7 +107,9 @@
 <h1>Welcome to <span class="font-semibold text-red-400">Reddit Job Board</span></h1>
 
 <div class="filters pt-4 pb-6">
-	<div class="flex w-full items-center justify-between">
+	<div
+		class="flex w-full flex-col items-start justify-start lg:flex-row lg:items-center lg:justify-between"
+	>
 		<div>
 			<label class="mb-1 label-text" for="postOwner">Post Owner</label>
 			<input
@@ -116,16 +118,16 @@
 				bind:value={postOwner}
 				on:input={handleFilterChange}
 				placeholder="Enter username"
-				class="input w-full border"
+				class="input w-64 border lg:w-full"
 			/>
 		</div>
 		<div>
-			<label class="label pb-1 w-full">
+			<label class="label w-full pb-1">
 				<span class="label-text">Post Type</span>
 				<select
 					bind:value={postTrigger}
 					on:change={handleFilterChange}
-					class="select w-full border"
+					class="select w-64 border lg:w-full"
 				>
 					{#each triggerOptions as option}
 						<option value={option.value}>{option.label}</option>
@@ -134,9 +136,13 @@
 			</label>
 		</div>
 		<div>
-			<label class="label pb-1 w-full">
+			<label class="label w-full pb-1">
 				<span class="label-text">Subreddit</span>
-				<select bind:value={subreddit} on:change={handleFilterChange} class="select w-full border">
+				<select
+					bind:value={subreddit}
+					on:change={handleFilterChange}
+					class="select w-64 border lg:w-full"
+				>
 					{#each subredditOptions as option}
 						<option value={option.value}>{option.label}</option>
 					{/each}

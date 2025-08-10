@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div>
-	<div class="mx-auto w-3/4">
+	<div class="mx-auto w-full lg:w-3/4">
 		<Navbar />
 
 		<div class="min-h-screen bg-gray-800 px-4 py-4">
