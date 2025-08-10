@@ -119,7 +119,7 @@
 				bind:value={postOwner}
 				on:input={handleFilterChange}
 				placeholder="Enter Username"
-				class="input w-64 border lg:w-full"
+				class="input mb-4 w-64 border lg:mb-0 lg:w-full"
 			/>
 		</div>
 		<div>
@@ -128,7 +128,7 @@
 				<select
 					bind:value={postTrigger}
 					on:change={handleFilterChange}
-					class="select w-64 border lg:w-full"
+					class="select mb-4 w-64 border lg:mb-0 lg:w-full"
 				>
 					{#each triggerOptions as option}
 						<option value={option.value}>{option.label}</option>
