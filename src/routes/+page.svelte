@@ -1,6 +1,7 @@
 <script lang="ts">
 	import moment from 'moment';
 	import { onMount } from 'svelte';
+	import { env } from '$env/dynamic/public';
 	import { ArrowRight, ArrowLeft } from '@lucide/svelte';
 	import ErrorMessage from '$lib/components/ErrorMessage.svelte';
 
@@ -24,7 +25,6 @@
 	let postTrigger: string = '';
 	let subreddit: string = '';
 	let isLoading: boolean = false;
-	let backendUrl: string = import.meta.env.VITE_BACKEND_URL;
 
 	const triggerOptions = [
 		{ value: '', label: 'All Types' },
@@ -67,7 +67,7 @@
 		params.append('limit', limit.toString());
 		params.append('offset', offset.toString());
 
-		const url = `${backendUrl}/api/reddit_posts?${params.toString()}`;
+		const url = `${env.PUBLIC_BACKEND_URL}/api/reddit_posts?${params.toString()}`;
 
 		try {
 			const response = await fetch(url);
