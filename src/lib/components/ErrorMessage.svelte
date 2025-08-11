@@ -14,7 +14,7 @@
 	})();
 </script>
 
-<div class="error-message w-full py-16 text-center">
+<div class="error-message w-full border-y py-96 text-center">
 	<div
 		class="relative flex flex-col items-center justify-center rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
 		role="alert"
