@@ -24,6 +24,7 @@
 	let postTrigger: string = '';
 	let subreddit: string = '';
 	let isLoading: boolean = false;
+	let backendUrl: string = import.meta.env.VITE_BACKEND_URL;
 
 	const triggerOptions = [
 		{ value: '', label: 'All Types' },
@@ -66,7 +67,7 @@
 		params.append('limit', limit.toString());
 		params.append('offset', offset.toString());
 
-		const url = `http://localhost:8000/api/reddit_posts?${params.toString()}`;
+		const url = `${backendUrl}/api/reddit_posts?${params.toString()}`;
 
 		try {
 			const response = await fetch(url);
