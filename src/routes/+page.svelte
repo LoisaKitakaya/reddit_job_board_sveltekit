@@ -12,6 +12,7 @@
 		post_url: string;
 		post_title: string;
 		post_category: string | null;
+		desired_skills: string | null;
 		post_trigger: string | null;
 		subreddit: string;
 		post_time: string | null;
@@ -22,6 +23,8 @@
 	let limit: number = 20;
 	let offset: number = 0;
 	let postOwner: string = '';
+	let postCategory: string = '';
+	let desiredSkill: string = '';
 	let postTrigger: string = '';
 	let subreddit: string = '';
 	let isLoading: boolean = false;
@@ -52,6 +55,26 @@
 		{ value: 'remotepython', label: 'r/remotepython' }
 	];
 
+	const jobCategoryOptions = [
+		{ value: '', label: 'All Categories' },
+		{ value: 'Writing & Content Creation', label: 'Writing & Content Creation' },
+		{ value: 'Graphic Design & Illustration', label: 'Graphic Design & Illustration' },
+		{ value: 'Web Development', label: 'Web Development' },
+		{ value: 'Programming & Software Development', label: 'Programming & Software Development' },
+		{ value: 'Digital Marketing', label: 'Digital Marketing' },
+		{ value: 'Video & Animation', label: 'Video & Animation' },
+		{ value: 'Audio Production', label: 'Audio Production' },
+		{ value: 'Virtual Assistance', label: 'Virtual Assistance' },
+		{ value: 'Translation & Localization', label: 'Translation & Localization' },
+		{ value: 'Consulting & Business Services', label: 'Consulting & Business Services' },
+		{ value: 'Photography & Image Editing', label: 'Photography & Image Editing' },
+		{ value: 'Sales & Lead Generation', label: 'Sales & Lead Generation' },
+		{ value: 'Engineering & Architecture', label: 'Engineering & Architecture' },
+		{ value: 'Data Science & Analytics', label: 'Data Science & Analytics' },
+		{ value: 'Teaching & Tutoring', label: 'Teaching & Tutoring' },
+		{ value: 'Uncategorized', label: 'Uncategorized' }
+	];
+
 	$: currentPage = Math.floor(offset / limit) + 1;
 	$: totalPages = Math.ceil(totalCount / limit);
 
@@ -61,6 +84,8 @@
 		const params = new URLSearchParams();
 
 		if (postOwner) params.append('post_owner', postOwner);
+		if (postCategory) params.append('post_category', postCategory);
+		if (desiredSkill) params.append('desired_skill', desiredSkill);
 		if (postTrigger) params.append('post_trigger', postTrigger);
 		if (subreddit) params.append('subreddit', subreddit);
 
@@ -108,11 +133,11 @@
 
 <h1>Welcome to <span class="font-semibold text-red-400">Reddit Job Board</span></h1>
 
-<div class="filters pt-4 pb-6">
+<div class="filters sticky top-14 z-10 bg-gray-800 pt-4 pb-6 text-white shadow-lg">
 	<div
-		class="flex w-full flex-col items-start justify-start lg:flex-row lg:items-center lg:justify-between"
+		class="flex w-full flex-col items-start justify-start gap-0 lg:flex-row lg:items-center lg:justify-between lg:gap-4"
 	>
-		<div>
+		<div class="w-1/4">
 			<label class="mb-1 label-text" for="postOwner">Post Owner</label>
 			<input
 				id="postOwner"
@@ -123,7 +148,21 @@
 				class="input mb-4 w-64 border lg:mb-0 lg:w-full"
 			/>
 		</div>
-		<div>
+		<div class="w-1/4">
+			<label class="label w-full pb-1">
+				<span class="label-text">Post Category</span>
+				<select
+					bind:value={postCategory}
+					on:change={handleFilterChange}
+					class="select mb-4 w-64 border lg:mb-0 lg:w-full"
+				>
+					{#each jobCategoryOptions as option}
+						<option value={option.value}>{option.label}</option>
+					{/each}
+				</select>
+			</label>
+		</div>
+		<div class="w-1/4">
 			<label class="label w-full pb-1">
 				<span class="label-text">Post Type</span>
 				<select
@@ -137,7 +176,7 @@
 				</select>
 			</label>
 		</div>
-		<div>
+		<div class="w-1/4">
 			<label class="label w-full pb-1">
 				<span class="label-text">Subreddit</span>
 				<select
@@ -165,13 +204,14 @@
 				<tr class="border-b border-gray-700">
 					<th class="font-semibold">#</th>
 					<!-- <th>Post ID</th> -->
-					<th>Post Title</th>
-					<!-- <th>Post Category</th> -->
-					<th>Post Type</th>
-					<th>Post Link</th>
-					<th>Reddit Username</th>
-					<th>Subreddit</th>
-					<th>Time Posted</th>
+					<th class="font-semibold">Post Title</th>
+					<th class="font-semibold">Post Category</th>
+					<th class="font-semibold">Post Type</th>
+					<th class="font-semibold">Post Link</th>
+					<th class="font-semibold">Reddit Username</th>
+					<th class="font-semibold">Subreddit</th>
+					<th class="font-semibold">Required Skills</th>
+					<th class="font-semibold">Time Posted</th>
 				</tr>
 			</thead>
 			<tbody class="[&>tr]:hover:preset-tonal-primary">
@@ -180,7 +220,7 @@
 						<th class="font-semibold">{index + 1}</th>
 						<!-- <td>{post.reddit_post_id}</td> -->
 						<td>{post.post_title}</td>
-						<!-- <td>{post.post_category}</td> -->
+						<td>{post.post_category}</td>
 						<td>
 							{#if post.post_trigger === 'task'}
 								Task

@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 </script>
 
-<nav class=" sticky top-0 z-10 border-b border-gray-700 bg-gray-800 text-white shadow-md">
+<nav class="sticky top-0 z-10 border-b border-gray-700 bg-gray-800 text-white shadow-md">
 	<ul class="mx-auto flex max-w-7xl flex-row items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
 		<li>
 			<a
