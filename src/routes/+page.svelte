@@ -5,6 +5,11 @@
 	import { ArrowRight, ArrowLeft } from '@lucide/svelte';
 	import ErrorMessage from '$lib/components/ErrorMessage.svelte';
 
+	export let data = {
+		title: "Find Freelance Jobs",
+		description: "Discover the latest freelance job opportunities from Reddit with our job aggregator. Filter by skills, categories, and more to find your perfect gig."
+	};
+
 	interface Post {
 		id: string;
 		post_owner_reddit_username: string;
@@ -131,6 +136,12 @@
 	onMount(fetchPosts);
 </script>
 
+<svelte:head>
+	<title>{page.data.title} | Reddit Job Board</title>
+
+	<meta name="description" content="{page.data.description}">
+</svelte:head>
+
 <h1>Welcome to <span class="font-semibold text-red-400">Reddit Job Board</span></h1>
 
 <div class="filters sticky top-14 z-10 bg-gray-800 pt-4 pb-6 text-white shadow-lg">
@@ -210,7 +221,6 @@
 					<th class="font-semibold">Post Link</th>
 					<th class="font-semibold">Reddit Username</th>
 					<th class="font-semibold">Subreddit</th>
-					<th class="font-semibold">Required Skills</th>
 					<th class="font-semibold">Time Posted</th>
 				</tr>
 			</thead>

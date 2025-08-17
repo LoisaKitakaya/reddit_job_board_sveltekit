@@ -9,7 +9,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Reddit Job Board</title>
 </svelte:head>
 
 <div>
