@@ -1,14 +1,12 @@
-<script lang="ts">
-	export let data = {
-		title: "About Our Job Platform",
-		description: "Learn about Reddit Job Aggregator, a platform dedicated to connecting freelancers with opportunities by aggregating and categorizing jobs from Reddit."
-	};
-</script>
+<script lang="ts"></script>
 
 <svelte:head>
-	<title>{page.data.title} | Reddit Job Board</title>
+	<title>About This Platform | Reddit Job Board</title>
 
-	<meta name="description" content="{page.data.description}">
+	<meta
+		name="description"
+		content="Learn about Reddit Job Aggregator, a platform dedicated to connecting freelancers with opportunities by aggregating and categorizing jobs from Reddit."
+	/>
 </svelte:head>
 
 <h1>About <span class="font-semibold text-red-400">Reddit Job Board</span></h1>
